@@ -13,9 +13,9 @@ All the assets cannot be redistributed and/or used without a proper license. The
 The assets can only be used to play the game in its original form, i.e. unchanged.
 
 Please, contact the assets' original authors for licensing.
-- Visuals : The visual asset pack was bought from https://www.gamedevmarket.net/asset/retro-pixel-space-shooter-shmup-pack/.
+- **Visuals** : The visual asset pack was bought from https://www.gamedevmarket.net/asset/retro-pixel-space-shooter-shmup-pack/.
 			The license I got from buying this asset pack is the https://creativecommons.org/licenses/by/4.0/ license.
 			The author is Roch Liles.
 			Some small changes were made.
 			
-- Audio : 
+- **Audio** : 
