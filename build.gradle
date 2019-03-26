@@ -25,6 +25,7 @@ allprojects {
         gdxVersion = '1.9.9'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
+        javapoetVersion = '1.11.1'
     }
 
     repositories {
@@ -37,13 +38,13 @@ allprojects {
     }
 }
 
-
 project(":assets") {
 
     apply plugin: 'java-library'
 
     dependencies {
         implementation "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
+        implementation "com.squareup:javapoet:$javapoetVersion"
     }
 }
 
@@ -52,8 +53,8 @@ project(":core") {
     apply plugin: 'java-library'
 
     dependencies {
-        implementation project(":assets")
-        
+        api project(":assets")
+
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
@@ -66,7 +67,7 @@ project(":desktop") {
 
     dependencies {
         compile project(":core")
-        
+
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
