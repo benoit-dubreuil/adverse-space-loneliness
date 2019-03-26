@@ -1,4 +1,4 @@
-package com.adversespaceloneliness.game;
+package com.adversespaceloneliness.game.core;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;

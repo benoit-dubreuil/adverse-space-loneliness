@@ -1,6 +1,6 @@
-package com.adversespaceloneliness.game.desktop;
+package com.adversespaceloneliness.game.core.desktop;
 
-import com.adversespaceloneliness.game.AdverseSpaceLoneliness;
+import com.adversespaceloneliness.game.core.AdverseSpaceLoneliness;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 

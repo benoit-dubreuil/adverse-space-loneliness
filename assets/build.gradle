@@ -1,0 +1,4 @@
+task generateAssets(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'com.adversespaceloneliness.game.assets.Main'
+}
