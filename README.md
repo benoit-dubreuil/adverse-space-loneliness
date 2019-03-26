@@ -1,3 +1,4 @@
+
 # Adverse Space Loneliness
 
 ## License
@@ -19,3 +20,25 @@ Please, contact the assets' original authors for licensing.
 			Some small changes were made.
 			
 - **Audio** : 
+
+## The Project
+
+### Goals
+- Actually finish the development of a game
+- Learn the basics and the framework of LibGDX
+- Learn how to make 2D game with LibGDX
+- Use the procedural content generator library Noise4J
+
+### Tools & Requirements
+
+#### Development
+- IntelliJ IDEA Community as the project IDE
+- Java JDK 11
+- Gradle 5.3 (will be downloaded automatically by the Gradle wrapper)
+
+#### Play
+- Java JRE 11
+
+#### Both
+- OpenGL version 3.0
+- OpenAL
