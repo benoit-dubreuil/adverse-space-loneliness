@@ -1,5 +1,5 @@
 project.ext.mainClassName = "com.adversespaceloneliness.game.desktop.DesktopLauncher"
-project.ext.assetsDir = new File("../assets/assets")
+project.ext.assetsDir = new File("../assets")
 
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName

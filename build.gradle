@@ -26,6 +26,7 @@ allprojects {
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
         javapoetVersion = '1.11.1'
+        commonsioVersion = '2.6'
     }
 
     repositories {
@@ -45,6 +46,7 @@ project(":assets") {
     dependencies {
         implementation "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         implementation "com.squareup:javapoet:$javapoetVersion"
+        implementation "commons-io:commons-io:$commonsioVersion"
     }
 }
 

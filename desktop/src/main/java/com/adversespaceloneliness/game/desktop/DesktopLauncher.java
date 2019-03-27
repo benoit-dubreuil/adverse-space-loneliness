@@ -1,4 +1,4 @@
-package com.adversespaceloneliness.game.core.desktop;
+package com.adversespaceloneliness.game.desktop;
 
 import com.adversespaceloneliness.game.core.AdverseSpaceLoneliness;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
