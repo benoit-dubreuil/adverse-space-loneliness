@@ -1,7 +1,5 @@
 package com.adversespaceloneliness.game.assets.generation.generator;
 
-import java.io.File;
-
 /**
  * Interface for asset generator on the directory level.
  */
@@ -14,12 +12,12 @@ public interface IAssetGenerator {
      *
      * @return True if the supplied top raw directory can be generated using this generation, false otherwise.
      */
-    boolean isTopRawDirectoryGeneratable(File topRawDirectory);
+    boolean isTopRawDirectoryGeneratable(String topRawDirectory);
 
     /**
      * Generates the top raw directory's assets. This means that somehow the assets in the supplied directory will be transformed and put inside the generated assets.
      *
      * @param topRawDirectory The top raw directory to be generated using this generation.
      */
-    void generateTopRawDirectory(File topRawDirectory);
+    void generateTopRawDirectory(String topRawDirectory);
 }

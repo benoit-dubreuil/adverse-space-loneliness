@@ -6,5 +6,6 @@ public class Main {
 
     public static void main(String[] args) {
         AssetGenerationController controller = new AssetGenerationController();
+        controller.generateAssets();
     }
 }
