@@ -1,0 +1,4 @@
+{
+    combineSubdirectories: true,
+    flattenPaths: false
+}

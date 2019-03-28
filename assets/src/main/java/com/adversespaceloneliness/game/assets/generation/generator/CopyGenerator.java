@@ -1,10 +1,12 @@
 package com.adversespaceloneliness.game.assets.generation.generator;
 
-import com.adversespaceloneliness.game.assets.generation.AssetGenerationController;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 
+/**
+ * The default generator, which simply copies the raw assets in their respective generated subdirectories.
+ */
 public class CopyGenerator implements IAssetGenerator {
 
     @Override
@@ -14,10 +16,8 @@ public class CopyGenerator implements IAssetGenerator {
 
     @Override
     public void generateTopRawDirectory(String topRawDirectory) {
-        String topGeneratedDirectory = topRawDirectory.replaceFirst('^' + AssetGenerationController.RAW_DIRECTORY, AssetGenerationController.GENERATED_DIRECTORY);
-
         try {
-            FileUtils.copyDirectory(new File(topRawDirectory), new File(topGeneratedDirectory));
+            FileUtils.copyDirectory(new File(topRawDirectory), new File(computeTopGeneratedDirectory(topRawDirectory)));
         } catch (Exception e) {
             e.printStackTrace();
         }

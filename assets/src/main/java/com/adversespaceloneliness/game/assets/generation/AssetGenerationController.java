@@ -2,7 +2,10 @@ package com.adversespaceloneliness.game.assets.generation;
 
 import com.adversespaceloneliness.game.assets.generation.generator.CopyGenerator;
 import com.adversespaceloneliness.game.assets.generation.generator.IAssetGenerator;
+import com.adversespaceloneliness.game.assets.generation.generator.SpritePackerGenerator;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,7 +20,9 @@ public class AssetGenerationController {
 
     public void generateAssets() {
         IAssetGenerator defaultAssetGenerator = new CopyGenerator();
-        IAssetGenerator[] assetGenerators = new IAssetGenerator[] {};
+        IAssetGenerator[] assetGenerators = new IAssetGenerator[] { new SpritePackerGenerator() };
+
+        emptyGeneratedDirectory();
 
         try {
             List<Path> rawDirectories = Files.walk(Paths.get(RAW_DIRECTORY), 1).filter(Files::isDirectory).collect(Collectors.toList());
@@ -43,6 +48,17 @@ public class AssetGenerationController {
                 }
             }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Empties the generated directory.
+     */
+    private void emptyGeneratedDirectory() {
+        try {
+            FileUtils.deleteDirectory(new File(GENERATED_DIRECTORY));
         } catch (Exception e) {
             e.printStackTrace();
         }

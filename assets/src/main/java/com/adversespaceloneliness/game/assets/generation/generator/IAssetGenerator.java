@@ -1,5 +1,7 @@
 package com.adversespaceloneliness.game.assets.generation.generator;
 
+import com.adversespaceloneliness.game.assets.generation.AssetGenerationController;
+
 /**
  * Interface for asset generator on the directory level.
  */
@@ -20,4 +22,16 @@ public interface IAssetGenerator {
      * @param topRawDirectory The top raw directory to be generated using this generation.
      */
     void generateTopRawDirectory(String topRawDirectory);
+
+    /**
+     * Computes the top generated directory subdirectory for the supplied top raw directory. In other words, computes the path that points to the new subdirectory of the generated
+     * assets path.
+     *
+     * @param topRawDirectory The top raw directory of the asset to generate.
+     *
+     * @return The top generated directory.
+     */
+    default String computeTopGeneratedDirectory(String topRawDirectory) {
+        return topRawDirectory.replaceFirst('^' + AssetGenerationController.RAW_DIRECTORY, AssetGenerationController.GENERATED_DIRECTORY);
+    }
 }
