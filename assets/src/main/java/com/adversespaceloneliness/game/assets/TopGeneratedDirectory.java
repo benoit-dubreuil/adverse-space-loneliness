@@ -1,5 +1,7 @@
 package com.adversespaceloneliness.game.assets;
 
+import java.io.File;
+
 /**
  * All the top directories in the assets/generated/ directory.
  */
@@ -7,13 +9,13 @@ public enum TopGeneratedDirectory {
 
     SPRITESHEET("spritesheet");
 
-    private final String m_directory;
+    private final File m_directory;
 
     TopGeneratedDirectory(String directory) {
-        m_directory = directory;
+        m_directory = new File(AssetGenerationController.GENERATED_DIRECTORY + directory);
     }
 
-    public String getDirectory() {
+    public File getDirectory() {
         return m_directory;
     }
 }
