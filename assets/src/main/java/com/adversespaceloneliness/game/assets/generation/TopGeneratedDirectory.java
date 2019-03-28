@@ -1,4 +1,4 @@
-package com.adversespaceloneliness.game.assets;
+package com.adversespaceloneliness.game.assets.generation;
 
 import java.io.File;
 
