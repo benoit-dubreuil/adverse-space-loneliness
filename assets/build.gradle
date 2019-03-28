@@ -1,4 +1,11 @@
+def assetsDir = "${project.buildDir}/assets/"
+def rawDir = assetsDir + "raw/"
+def generatedDir = assetsDir + "generated/"
+
 task generateAssets(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.adversespaceloneliness.game.assets.Main'
+
+    inputs.files(rawDir)
+    outputs.dir(generatedDir)
 }
