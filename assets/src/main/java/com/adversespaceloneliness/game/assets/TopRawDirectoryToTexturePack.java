@@ -8,6 +8,8 @@ public enum TopRawDirectoryToTexturePack {
 
     SPRITE("sprite");
 
+    public static final TopGeneratedDirectory TOP_GENERATED_DIRECTORY_OUTPUT = TopGeneratedDirectory.SPRITESHEET;
+
     private final String m_directory;
 
     TopRawDirectoryToTexturePack(String directory) {
