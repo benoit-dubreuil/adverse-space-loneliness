@@ -8,25 +8,26 @@ buildscript {
         jcenter()
         google()
     }
-
-    dependencies {
-    }
 }
 
 allprojects {
+
     apply plugin: "idea"
     apply plugin: "java"
 
     sourceCompatibility = 11.0
     targetCompatibility = 11.0
 
-    version = '1.0'
+    version = '0.0'
     
     ext {
         appName = "adverse-space-loneliness"
         gdxVersion = '1.9.9'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
+        javapoetVersion = '1.11.1'
+        commonsioVersion = '2.6'
+        commonslangVersion = '3.8.1'
     }
 
     repositories {
@@ -39,24 +40,41 @@ allprojects {
     }
 }
 
-project(":desktop") {
+project(":assets") {
+
+    apply plugin: 'java-library'
 
     dependencies {
-        compile project(":core")
-        compile "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
-        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+        implementation "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
+        implementation "com.squareup:javapoet:$javapoetVersion"
+        implementation "commons-io:commons-io:$commonsioVersion"
+        implementation "org.apache.commons:commons-lang3:$commonslangVersion"
     }
 }
 
 project(":core") {
 
+    apply plugin: 'java-library'
+
     dependencies {
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
-        compile "com.badlogicgames.ashley:ashley:$ashleyVersion"
-        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        api project(":assets")
+
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+        api "com.badlogicgames.ashley:ashley:$ashleyVersion"
+        api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+    }
+}
+
+project(":desktop") {
+
+    dependencies {
+        compile project(":core")
+
+        compile "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
     }
 }
