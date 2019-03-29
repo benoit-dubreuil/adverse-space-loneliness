@@ -14,7 +14,7 @@ public class AdverseSpaceLoneliness extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        img = new Texture("assets/raw/texture/badlogic.jpg");
+        img = new Texture("assets/generated/texture/badlogic.jpg");
     }
 
     @Override
