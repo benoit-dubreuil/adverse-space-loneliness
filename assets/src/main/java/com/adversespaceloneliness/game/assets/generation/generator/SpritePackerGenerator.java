@@ -16,10 +16,6 @@ public class SpritePackerGenerator implements IAssetGenerator {
     @Override
     public void generateTopRawDirectory(String topRawDirectory) {
         TexturePacker.Settings settings = new TexturePacker.Settings();
-
-        settings.maxWidth = 8192;
-        settings.maxHeight = 8192;
-
         TexturePacker.process(settings, topRawDirectory, computeTopGeneratedDirectory(topRawDirectory), "spritesheet");
     }
 }

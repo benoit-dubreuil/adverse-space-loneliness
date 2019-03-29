@@ -1,4 +1,5 @@
 {
-    combineSubdirectories: true,
-    flattenPaths: false
+    "combineSubdirectories" : true,
+    "maxWidth" : 8192,
+    "maxHeight" : 8192
 }
