@@ -12,12 +12,18 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Entry point for the asset generation.
+ */
 public class AssetGenerationController {
 
     public static final String ASSET_DIRECTORY = "assets";
     public static final String RAW_DIRECTORY = ASSET_DIRECTORY + "/raw";
     public static final String GENERATED_DIRECTORY = ASSET_DIRECTORY + "/generated";
 
+    /**
+     * Generates all the raw assets and output the results into the generated directory.
+     */
     public void generateAssets() {
         IAssetGenerator defaultAssetGenerator = new CopyGenerator();
         IAssetGenerator[] assetGenerators = new IAssetGenerator[] { new SpritePackerGenerator() };
