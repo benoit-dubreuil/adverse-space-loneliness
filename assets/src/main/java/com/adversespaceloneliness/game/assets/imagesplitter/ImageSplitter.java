@@ -20,13 +20,35 @@ public class ImageSplitter {
         String output = "assets/assets/test/";
 
         ImageSplitter imgSplitter = new ImageSplitter();
-        imgSplitter.splitImage(input, output);
+        //    imgSplitter.splitImage(input, output);
+        imgSplitter.splitImage(input);
     }
 
     public ImageSplitter() {
     }
 
-    public void splitImages() {
+    /**
+     * Splits multiple image strips.
+     *
+     * @param inputPaths The input paths to each image strip.
+     *
+     * @see #splitImage(String)
+     */
+    public void splitImages(String[] inputPaths) {
+        for (String inputPath : inputPaths) {
+            splitImage(inputPath);
+        }
+    }
+
+    /**
+     * Splits an image strip into multiple images, one for each frame, in the same directory. The new images have _$ appended to their names, where $ is the frame index. Also, the
+     * _strip$ suffix from the input path is not present in the output images, as it represents the number of frames in the image strip. The input image is only split if it's $
+     * sub-suffix from the _strip$ suffix equals to 1, as it would mean it's not an actual image strip but a whole image.
+     *
+     * @param inputPath The input path to the image strip.
+     */
+    public void splitImage(String inputPath) {
+        splitImage(inputPath, FilenameUtils.getPath(inputPath));
     }
 
     /**
@@ -37,7 +59,7 @@ public class ImageSplitter {
      * @param inputPath  The input path to the image strip.
      * @param outputPath The output path to the directory where the image frames should be saved.
      */
-    private void splitImage(String inputPath, String outputPath) {
+    public void splitImage(String inputPath, String outputPath) {
 
         String imgBaseName = FilenameUtils.getBaseName(inputPath);
         int imgCount = extractImageStripCount(imgBaseName);
