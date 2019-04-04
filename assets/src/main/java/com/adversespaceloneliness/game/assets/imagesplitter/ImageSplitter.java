@@ -2,6 +2,10 @@ package com.adversespaceloneliness.game.assets.imagesplitter;
 
 import org.apache.commons.io.FilenameUtils;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.nio.file.Path;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,9 +17,10 @@ public class ImageSplitter {
     public static void main(String[] paths) {
         String input = "C:\\Users\\Admin\\Documents\\Workspaces\\ChevreuilGames\\AdverseSpaceLoneliness\\assets\\assets\\raw\\sprite\\retro-space-pixel-shooter-pack\\enemy"
             + "\\asteroid_strip2.png";
+        String output = "assets/assets/test/";
 
         ImageSplitter imgSplitter = new ImageSplitter();
-        imgSplitter.splitImage(input, null);
+        imgSplitter.splitImage(input, output);
     }
 
     public ImageSplitter() {
@@ -37,20 +42,41 @@ public class ImageSplitter {
         String imgBaseName = FilenameUtils.getBaseName(inputPath);
         int imgCount = extractImageStripCount(imgBaseName);
         String imgOutputName = extractImageBaseName(imgBaseName);
+        String extension = FilenameUtils.getExtension(inputPath);
 
-        System.out.println(imgBaseName);
-        System.out.println(imgCount);
-        System.out.println(imgOutputName);
+        BufferedImage img;
 
-/*
-        // Output
-        File outputFile = new File(outputPath);
-        File outputParentDirectory = outputFile.getParentFile();
-
-        if (!outputParentDirectory.exists()) {
-            outputParentDirectory.mkdirs();
+        try {
+            img = ImageIO.read(new File(inputPath));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
         }
-        */
+
+        createDirectoryPath(outputPath);
+
+        int imgFrameWidth = img.getWidth() / imgCount;
+        for (int index = 0; index < imgCount; ++index) {
+            try {
+                Path imgFrameOutputPath = Path.of(outputPath, imgOutputName + "_" + index + "." + extension);
+                ImageIO.write(img.getSubimage(index * imgFrameWidth, 0, imgFrameWidth, img.getHeight()), extension, imgFrameOutputPath.toFile());
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+    }
+
+    /**
+     * Assures that the supplied directory path exists. If not, then it creates it.
+     *
+     * @param directoryPath A path that only contains directories, i.e. it does not point to a file.
+     */ private void createDirectoryPath(String directoryPath) {
+        File outputDir = new File(directoryPath);
+
+        if (!outputDir.exists()) {
+            outputDir.mkdirs();
+        }
     }
 
     /**
