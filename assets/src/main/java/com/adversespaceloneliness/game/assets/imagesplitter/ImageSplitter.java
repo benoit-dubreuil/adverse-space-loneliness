@@ -15,13 +15,15 @@ public class ImageSplitter {
     private static final String IMG_COUNT_REGEX = "\\d$";
 
     public static void main(String[] paths) {
-        String input = "C:\\Users\\Admin\\Documents\\Workspaces\\ChevreuilGames\\AdverseSpaceLoneliness\\assets\\assets\\raw\\sprite\\retro-space-pixel-shooter-pack\\enemy"
-            + "\\asteroid_strip2.png";
-        String output = "assets/assets/test/";
+        for (String path : paths) {
+            if (!new File(path).exists()) {
+                System.err.println("The following file does not exist : " + path);
+                System.exit(1);
+            }
+        }
 
         ImageSplitter imgSplitter = new ImageSplitter();
-        //    imgSplitter.splitImage(input, output);
-        imgSplitter.splitImage(input);
+        imgSplitter.splitImages(paths);
     }
 
     public ImageSplitter() {
