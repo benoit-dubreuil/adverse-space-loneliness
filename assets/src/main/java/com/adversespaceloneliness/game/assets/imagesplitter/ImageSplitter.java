@@ -54,11 +54,23 @@ public class ImageSplitter {
         }
 
         createDirectoryPath(outputPath);
+        extractImageFrames(outputPath, imgCount, imgOutputName, extension, img);
+    }
 
+    /**
+     * Extracts the image strip's frames and save them in the output directory.
+     *
+     * @param outputDirectory The output directory where to extract the image frames.
+     * @param imgCount        The number of frames in the image strip.
+     * @param imgOutputName   The output name to give to each frame. A _$ suffix will be appended to the name whilst saving each frame.
+     * @param extension       The extension of the image strip and henceforth the image frames' extension.
+     * @param img             The image strip data.
+     */
+    private void extractImageFrames(String outputDirectory, int imgCount, String imgOutputName, String extension, BufferedImage img) {
         int imgFrameWidth = img.getWidth() / imgCount;
         for (int index = 0; index < imgCount; ++index) {
             try {
-                Path imgFrameOutputPath = Path.of(outputPath, imgOutputName + "_" + index + "." + extension);
+                Path imgFrameOutputPath = Path.of(outputDirectory, imgOutputName + "_" + index + "." + extension);
                 ImageIO.write(img.getSubimage(index * imgFrameWidth, 0, imgFrameWidth, img.getHeight()), extension, imgFrameOutputPath.toFile());
             } catch (Exception e) {
                 e.printStackTrace();
@@ -71,7 +83,8 @@ public class ImageSplitter {
      * Assures that the supplied directory path exists. If not, then it creates it.
      *
      * @param directoryPath A path that only contains directories, i.e. it does not point to a file.
-     */ private void createDirectoryPath(String directoryPath) {
+     */
+    private void createDirectoryPath(String directoryPath) {
         File outputDir = new File(directoryPath);
 
         if (!outputDir.exists()) {
