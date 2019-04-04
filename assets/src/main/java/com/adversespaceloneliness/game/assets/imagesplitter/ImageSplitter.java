@@ -23,6 +23,14 @@ public class ImageSplitter {
     public void splitImages() {
     }
 
+    /**
+     * Splits an image strip into multiple images, one for each frame, in the output directory. The new images have _$ appended to their names, where $ is the frame index. Also,
+     * the _strip$ suffix from the input path is not present in the output images, as it represents the number of frames in the image strip. The input image is only split if
+     * it's $ sub-suffix from the _strip$ suffix equals to 1, as it would mean it's not an actual image strip but a whole image.
+     *
+     * @param inputPath The input path to the image strip.
+     * @param outputPath The output path to the directory where the image frames should be saved.
+     */
     private void splitImage(String inputPath, String outputPath) {
 
         int imgCount = computeImageStripCount(inputPath);
