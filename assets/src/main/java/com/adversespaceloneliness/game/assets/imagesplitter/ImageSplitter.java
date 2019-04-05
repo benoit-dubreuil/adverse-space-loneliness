@@ -9,11 +9,20 @@ import java.nio.file.Path;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The image splitter class serves as a small program to split image strips into one image file per frame in the original image. In other words, it takes horizontal one-dimensional
+ * image strips and then split them.
+ */
 public class ImageSplitter {
 
     private static final String IMG_COUNT_SUFFIX_REGEX = "(_strip\\d)$";
     private static final String IMG_COUNT_REGEX = "\\d$";
 
+    /**
+     * Splits all image strips supplied as arguments. The main exits with a failure code if at least one of the paths does not exist.
+     *
+     * @param paths The image strip paths.
+     */
     public static void main(String[] paths) {
         for (String path : paths) {
             if (!new File(path).exists()) {
