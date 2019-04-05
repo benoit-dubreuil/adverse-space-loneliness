@@ -1,11 +1,69 @@
-def assetsDir = "${project.buildDir}/assets/"
-def rawDir = assetsDir + "raw/"
-def generatedDir = assetsDir + "generated/"
+import groovy.transform.Field
 
+import static groovy.io.FileType.FILES
+
+@Field def final IMG_STRIP_SUFFIX_REGEX = /^.*((_strip\d)(\.(png|(jpg|jpeg)|gif|(bmp|dib)|(tiff|tif)|wbmp)))$/
+def final ASSETS_DIR = "${project.projectDir}/assets/"
+def final RAW_DIR = ASSETS_DIR + "raw/"
+def final GENERATED_DIR = ASSETS_DIR + "generated/"
+
+/**
+ * Gets all the image strip files from the supplied directory. Requires an actual version of Groovy and not the default one.
+ *
+ * @param directory The directory from which to recursively get the image strip files.
+ *
+ * @return The image strip files array.
+ */
+def getImageStrips(directory) {
+    def files = []
+    new File(directory).traverse(type: FILES) {
+        if (it.getName() ==~ IMG_STRIP_SUFFIX_REGEX) {
+            files.add(it)
+        }
+    }
+
+    return files
+}
+
+/**
+ * Splits the image strips from the raw folder into multiple image frames. The results are saved in the raw folder.
+ */
+task splitImageStrips(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'com.adversespaceloneliness.game.assets.imagesplitter.ImageSplitter'
+
+    args getImageStrips(RAW_DIR)
+
+    inputs.files(RAW_DIR)
+    outputs.dir(RAW_DIR)
+
+    println "Splitting image strips"
+}
+
+/**
+ * Cleans up after the splitImageStrips task by deleting all useless image strip files.
+ */
+task deleteImageStrips {
+    dependsOn splitImageStrips
+
+    inputs.files(RAW_DIR)
+    outputs.dir(RAW_DIR)
+
+    doLast {
+        println "Deleting image strips"
+        getImageStrips(RAW_DIR)*.delete()
+    }
+}
+
+/**
+ * Generates the assets from the raw folder into the generated folder.
+ */
 task generateAssets(type: JavaExec) {
+    dependsOn deleteImageStrips
+
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.adversespaceloneliness.game.assets.Main'
 
-    inputs.files(rawDir)
-    outputs.dir(generatedDir)
+    inputs.files(RAW_DIR)
+    outputs.dir(GENERATED_DIR)
 }
