@@ -1,4 +1,3 @@
-
 # Adverse Space Loneliness
 
 ## License
@@ -21,6 +20,7 @@ Please, contact the assets' original authors for licensing.
 			
 - **Audio** : 
 
+
 ## The Project
 
 ### Goals
@@ -29,8 +29,15 @@ Please, contact the assets' original authors for licensing.
 - Learn how to make 2D game with LibGDX
 - Use the procedural content generator library Noise4J
 
-### Tools & Requirements
+### Development Steps
 
+#### Assets Subproject
+1. Standardized the sprites from the _retro-pixel-space-shooter-shmup-pack_ by mirroring them and renaming them using a _PowerShell_ script
+2. Created a _Java_ tool accompanied with a _Gradle_ script to split all sprite strips
+4. Created a _Java_ tool accompanied with a _Gradle_ script to pack all sprites into a texture atlas
+
+
+### Tools & Requirements
 #### Development
 - IntelliJ IDEA Community as the project IDE
 - Java JDK 11
