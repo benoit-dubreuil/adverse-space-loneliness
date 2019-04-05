@@ -41,9 +41,16 @@ task splitImageStrips(type: JavaExec) {
 }
 
 /**
+ * Cleans up after the splitImageStrips task by deleting all useless image strip files.
+ */
+task deleteImageStrips(dependsOn: 'splitImageStrips') { 
+    getImageStrips(RAW_DIR)*.delete()
+}
+
+/**
  * Generates the assets from the raw folder into the generated folder.
  */
-task generateAssets(type: JavaExec, dependsOn: 'splitImageStrips') {
+task generateAssets(type: JavaExec, dependsOn: 'deleteImageStrips') {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.adversespaceloneliness.game.assets.Main'
 
