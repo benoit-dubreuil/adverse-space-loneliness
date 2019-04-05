@@ -59,7 +59,7 @@ public class ImageSplitter {
      * @param inputPath The input path to the image strip.
      */
     public void splitImage(String inputPath) {
-        splitImage(inputPath, FilenameUtils.getPath(inputPath));
+        splitImage(inputPath, FilenameUtils.getFullPath(inputPath));
     }
 
     /**

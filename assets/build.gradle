@@ -32,12 +32,12 @@ task splitImageStrips(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.adversespaceloneliness.game.assets.imagesplitter.ImageSplitter'
 
-    def files = getImageStrips(RAW_DIR)
-
-    args files
+    args getImageStrips(RAW_DIR)
 
     inputs.files(RAW_DIR)
     outputs.dir(RAW_DIR)
+
+    println "Splitting image strips"
 }
 
 /**
