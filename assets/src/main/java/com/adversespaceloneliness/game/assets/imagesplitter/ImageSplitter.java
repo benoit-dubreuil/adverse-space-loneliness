@@ -10,8 +10,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * The image splitter class serves as a small program to split image strips into one image file per frame in the original image. In other words, it takes horizontal one-dimensional
- * image strips and then split them.
+ * The image splitter class serves as a small program to split image strips into one image file per frame from the original image. In other words, it takes horizontal
+ * one-dimensional image strips and then split them.
  */
 public class ImageSplitter {
 
@@ -118,17 +118,13 @@ public class ImageSplitter {
      * @param directoryPath A path that only contains directories, i.e. it does not point to a file.
      */
     private void createDirectoryPath(String directoryPath) {
-        File outputDir = new File(directoryPath);
-
-        if (!outputDir.exists()) {
-            outputDir.mkdirs();
-        }
+        new File(directoryPath).mkdirs();
     }
 
     /**
-     * Extracts the image base name without the _strip$ suffix. A base name is a file's name without a path nor an extension.
+     * Extracts the image base name without the _strip$ suffix. A base name is a file name without a path nor an extension.
      *
-     * @param imgBaseName The image's base name. A base name is a file's name without a path nor an extension.
+     * @param imgBaseName The image's base name. A base name is a file name without a path nor an extension.
      *
      * @return The image's base name without its _strip$ suffix.
      */
@@ -139,7 +135,7 @@ public class ImageSplitter {
     /**
      * Extracts the image count from an image strip's name.
      *
-     * @param imgBaseName The image's base name. A base name is a file's name without a path nor an extension.
+     * @param imgBaseName The image's base name. A base name is a file name without a path nor an extension.
      *
      * @return The image count from an image strip. Returns 1 if the image is not a strip. Returns a number bigger than 1 if the image is a strip.
      */
@@ -162,7 +158,7 @@ public class ImageSplitter {
     /**
      * Extracts the image strip's suffix from it's path.
      *
-     * @param imgBaseName The image's base name. A base name is a file's name without a path nor an extension.
+     * @param imgBaseName The image's base name. A base name is a file name without a path nor an extension.
      *
      * @return The image strip's suffix it's path.
      */

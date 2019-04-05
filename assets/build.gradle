@@ -26,7 +26,7 @@ def getImageStrips(directory) {
 }
 
 /**
- * Splits the image strips from the raw folder into multiple image frames. The results are save in the raw folder.
+ * Splits the image strips from the raw folder into multiple image frames. The results are saved in the raw folder.
  */
 task splitImageStrips(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath

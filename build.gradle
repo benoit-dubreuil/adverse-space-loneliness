@@ -52,7 +52,6 @@ project(":assets") {
         implementation "commons-io:commons-io:$commonsioVersion"
         implementation "org.apache.commons:commons-lang3:$commonslangVersion"
         compile group: 'org.codehaus.groovy', name: 'groovy-all', version: groovyVersion, ext: 'pom'
-
     }
 }
 
