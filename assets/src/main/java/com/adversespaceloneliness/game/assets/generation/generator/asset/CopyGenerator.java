@@ -1,4 +1,4 @@
-package com.adversespaceloneliness.game.assets.generation.generator;
+package com.adversespaceloneliness.game.assets.generation.generator.asset;
 
 import org.apache.commons.io.FileUtils;
 

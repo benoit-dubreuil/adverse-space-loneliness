@@ -1,8 +1,8 @@
 package com.adversespaceloneliness.game.assets.generation;
 
-import com.adversespaceloneliness.game.assets.generation.generator.CopyGenerator;
-import com.adversespaceloneliness.game.assets.generation.generator.IAssetGenerator;
-import com.adversespaceloneliness.game.assets.generation.generator.SpritePackerGenerator;
+import com.adversespaceloneliness.game.assets.generation.generator.asset.CopyGenerator;
+import com.adversespaceloneliness.game.assets.generation.generator.asset.IAssetGenerator;
+import com.adversespaceloneliness.game.assets.generation.generator.asset.SpritePackerGenerator;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
