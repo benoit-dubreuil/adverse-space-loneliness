@@ -1,4 +1,6 @@
-package com.adversespaceloneliness.game.assets.generation;
+package com.adversespaceloneliness.game.assets.generation.generator.asset;
+
+import com.adversespaceloneliness.game.assets.generation.AssetGenerationController;
 
 /**
  * The top directories in the assets/raw/ directory that must be texture packed. This overrides the default behaviour, which is copying the assets/raw/ directories into the

@@ -1,6 +1,5 @@
 package com.adversespaceloneliness.game.assets.generation.generator.asset;
 
-import com.adversespaceloneliness.game.assets.generation.TopRawDirectoryToTexturePack;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 
 /**

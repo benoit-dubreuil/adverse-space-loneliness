@@ -1,4 +1,6 @@
-package com.adversespaceloneliness.game.assets.generation;
+package com.adversespaceloneliness.game.assets.generation.generator.asset;
+
+import com.adversespaceloneliness.game.assets.generation.AssetGenerationController;
 
 /**
  * All the top directories in the assets/generated/ directory.
