@@ -17,7 +17,7 @@ public interface IAssetGenerator {
     boolean isTopRawDirectoryGeneratable(String topRawDirectory);
 
     /**
-     * Generates the top raw directory's assets. This means that somehow the assets in the supplied directory will be transformed and put inside the generated assets.
+     * Generates the top raw directory's assets. This means that somehow the assets in the supplied directory will be transformed and put inside the generated assets folder.
      *
      * @param topRawDirectory The top raw directory to be generated using this generation.
      */
