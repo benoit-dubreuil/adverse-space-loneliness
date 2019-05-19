@@ -19,9 +19,6 @@ import java.util.stream.Collectors;
  */
 public class AssetGenerationController implements IGenerationController {
 
-    /**
-     * Generates all the raw assets and outputs the results into the generated directory.
-     */
     @Override
     public void generate() {
         IAssetGenerator defaultAssetGenerator = new CopyGenerator();
@@ -31,31 +28,54 @@ public class AssetGenerationController implements IGenerationController {
 
         try {
             List<Path> rawDirs = Files.walk(Paths.get(IGenerationData.RAW_DIRECTORY), 1).filter(Files::isDirectory).collect(Collectors.toList());
-
             // Remove the raw directory itself
             rawDirs.remove(0);
 
-            rawDirectoryLoop:
             for (Path rawDirPath : rawDirs) {
 
-                String rawDirectory = rawDirPath.toString().replace('\\', '/');
-
-                for (IAssetGenerator assetGenerator : assetGenerators) {
-                    if (assetGenerator.isRawDirPathGeneratable(rawDirectory)) {
-
-                        assetGenerator.generate(rawDirectory);
-                        continue rawDirectoryLoop;
-                    }
-                }
-
-                if (defaultAssetGenerator.isRawDirPathGeneratable(rawDirectory)) {
-                    defaultAssetGenerator.generate(rawDirectory);
-                }
+                String normalizedRawDirPath = rawDirPath.toString().replace('\\', '/');
+                generateAsset(defaultAssetGenerator, assetGenerators, normalizedRawDirPath);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Generates the asset at the supplied raw's normalized directory path according to the first matching asset generator from the given asset generators or from the default one
+     * if none matched.
+     *
+     * @param defaultAssetGenerator The default asset generator to use when no asset generators match.
+     * @param assetGenerators       All asset generators, ordered from more priority to less priority.
+     * @param rawNormalizedDirPath  The raw's normalized directory path.
+     */
+    private void generateAsset(IAssetGenerator defaultAssetGenerator, IAssetGenerator[] assetGenerators, String rawNormalizedDirPath) {
+        if (!generateAssetFromGenerators(assetGenerators, rawNormalizedDirPath)) {
+
+            if (defaultAssetGenerator.isRawDirPathGeneratable(rawNormalizedDirPath)) {
+                defaultAssetGenerator.generate(rawNormalizedDirPath);
+            }
+        }
+    }
+
+    /**
+     * Generates the asset at the supplied raw's normalized directory path according to the first matching asset generator from the given asset generators.
+     *
+     * @param assetGenerators      All asset generators, ordered from more priority to less priority.
+     * @param rawNormalizedDirPath The raw's normalized directory path.
+     *
+     * @return Returns true if an asset generator matched and generated this asset and false otherwise.
+     */
+    private boolean generateAssetFromGenerators(IAssetGenerator[] assetGenerators, String rawNormalizedDirPath) {
+        for (IAssetGenerator assetGenerator : assetGenerators) {
+            if (assetGenerator.isRawDirPathGeneratable(rawNormalizedDirPath)) {
+
+                assetGenerator.generate(rawNormalizedDirPath);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
