@@ -1,4 +1,4 @@
-package com.adversespaceloneliness.game.assets.generation.generator.asset;
+package com.adversespaceloneliness.game.assets.generation.asset.generator;
 
 import org.apache.commons.io.FileUtils;
 
@@ -10,14 +10,14 @@ import java.io.File;
 public class CopyGenerator implements IAssetGenerator {
 
     @Override
-    public boolean isTopRawDirectoryGeneratable(String topRawDirectory) {
+    public boolean isRawDirPathGeneratable(String rawDirPath) {
         return true;
     }
 
     @Override
-    public void generateTopRawDirectory(String topRawDirectory) {
+    public void generate(String topRawDirectory) {
         try {
-            FileUtils.copyDirectory(new File(topRawDirectory), new File(computeTopGeneratedDirectory(topRawDirectory)));
+            FileUtils.copyDirectory(new File(topRawDirectory), new File(computeGeneratedDirPath(topRawDirectory)));
         } catch (Exception e) {
             e.printStackTrace();
         }
