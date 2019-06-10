@@ -1,6 +1,6 @@
 package com.adversespaceloneliness.game.assets.generation.asset.generator;
 
-import com.adversespaceloneliness.game.assets.generation.asset.generator.data.RawDirectoryToTexturePack;
+import com.adversespaceloneliness.game.assets.generation.asset.generator.data.RawDirToTexturePack;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 
 /**
@@ -8,14 +8,16 @@ import com.badlogic.gdx.tools.texturepacker.TexturePacker;
  */
 public class SpritePackerGenerator implements IAssetGenerator {
 
+    private static final String ATLAS_NAME = "spritesheet_and_texture";
+
     @Override
-    public boolean isRawDirPathGeneratable(String rawDirPath) {
-        return rawDirPath.startsWith(RawDirectoryToTexturePack.SPRITE.getDirectory());
+    public boolean isDirPathGeneratable(String rawDirPath) {
+        return rawDirPath.startsWith(RawDirToTexturePack.SPRITE.getDir());
     }
 
     @Override
     public void generate(String topRawDirectory) {
         TexturePacker.Settings settings = new TexturePacker.Settings();
-        TexturePacker.process(settings, topRawDirectory, computeGeneratedDirPath(topRawDirectory), "spritesheet");
+        TexturePacker.process(settings, topRawDirectory, computeGeneratedDirPath(topRawDirectory), ATLAS_NAME);
     }
 }

@@ -9,15 +9,6 @@ import com.adversespaceloneliness.game.assets.generation.IGenerator;
 public interface IAssetGenerator extends IGenerator {
 
     /**
-     * Checks if the supplied raw's directory path can be generated using this generation.
-     *
-     * @param rawDirPath The raw's directory path that needs to be checked for if it can be generated using this generation.
-     *
-     * @return True if the supplied raw's directory path can be generated using this generation, false otherwise.
-     */
-    boolean isRawDirPathGeneratable(String rawDirPath);
-
-    /**
      * Computes the generated's directory path for the supplied raw's directory path. In other words, it replaces the first occurrence of the word "raw" by the word "generated".
      *
      * @param rawDirPath The raw's directory path that is used to compute the generated's directory path.

@@ -4,8 +4,9 @@ import static groovy.io.FileType.FILES
 
 @Field def final IMG_STRIP_SUFFIX_REGEX = /^.*((_strip\d)(\.(png|(jpg|jpeg)|gif|(bmp|dib)|(tiff|tif)|wbmp)))$/
 def final ASSETS_DIR = "${project.projectDir}/assets/"
-def final RAW_DIR = ASSETS_DIR + "raw/"
-def final GENERATED_DIR = ASSETS_DIR + "generated/"
+def final RAW_ASSETS_DIR = ASSETS_DIR + "raw/"
+def final GENERATED_ASSETS_DIR = ASSETS_DIR + "generated/"
+def final GENERATED_CODE_DIR = "${project.projectDir}/src/main/java/com/adversespaceloneliness/game/assets/generated/"
 
 /**
  * Gets all the image strip files from the supplied directory. Requires an actual version of Groovy and not the default one.
@@ -32,10 +33,10 @@ task splitImageStrips(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.adversespaceloneliness.game.assets.imagesplitter.ImageSplitter'
 
-    args getImageStrips(RAW_DIR)
+    args getImageStrips(RAW_ASSETS_DIR)
 
-    inputs.files(RAW_DIR)
-    outputs.dir(RAW_DIR)
+    inputs.files(RAW_ASSETS_DIR)
+    outputs.dir(RAW_ASSETS_DIR)
 
     println "Splitting image strips"
 }
@@ -46,12 +47,12 @@ task splitImageStrips(type: JavaExec) {
 task deleteImageStrips {
     dependsOn splitImageStrips
 
-    inputs.files(RAW_DIR)
-    outputs.dir(RAW_DIR)
+    inputs.files(RAW_ASSETS_DIR)
+    outputs.dir(RAW_ASSETS_DIR)
 
     doLast {
         println "Deleting image strips"
-        getImageStrips(RAW_DIR)*.delete()
+        getImageStrips(RAW_ASSETS_DIR)*.delete()
     }
 }
 
@@ -64,6 +65,6 @@ task generateAssets(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.adversespaceloneliness.game.assets.Main'
 
-    inputs.files(RAW_DIR)
-    outputs.dir(GENERATED_DIR)
+    inputs.files(RAW_ASSETS_DIR, GENERATED_ASSETS_DIR)
+    outputs.dirs(GENERATED_ASSETS_DIR, GENERATED_CODE_DIR)
 }

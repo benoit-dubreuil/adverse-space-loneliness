@@ -11,4 +11,13 @@ public interface IGenerator {
      * @param assetPath The asset path, whether it be a directory or a file.
      */
     void generate(String assetPath);
+
+    /**
+     * Checks if the supplied directory path can be generated using this generation.
+     *
+     * @param dirPath The directory path that needs to be checked for if it can be generated using this generation.
+     *
+     * @return True if the supplied directory path can be generated using this generation, false otherwise.
+     */
+    boolean isDirPathGeneratable(String dirPath);
 }

@@ -5,6 +5,7 @@ import com.adversespaceloneliness.game.assets.generation.IGenerationData;
 import com.adversespaceloneliness.game.assets.generation.asset.generator.CopyGenerator;
 import com.adversespaceloneliness.game.assets.generation.asset.generator.IAssetGenerator;
 import com.adversespaceloneliness.game.assets.generation.asset.generator.SpritePackerGenerator;
+import com.adversespaceloneliness.game.assets.util.PathUtils;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -24,16 +25,16 @@ public class AssetGenerationController implements IGenerationController {
         IAssetGenerator defaultAssetGenerator = new CopyGenerator();
         IAssetGenerator[] assetGenerators = new IAssetGenerator[] { new SpritePackerGenerator() };
 
-        emptyGeneratedDirectory();
+        emptyGeneratedDir();
 
         try {
-            List<Path> rawDirs = Files.walk(Paths.get(IGenerationData.RAW_DIRECTORY), 1).filter(Files::isDirectory).collect(Collectors.toList());
+            List<Path> rawDirs = Files.walk(Paths.get(IGenerationData.RAW_DIRECTORY), DIRECTORY_WALKING_DEPTH).filter(Files::isDirectory).collect(Collectors.toList());
             // Remove the raw directory itself
             rawDirs.remove(0);
 
             for (Path rawDirPath : rawDirs) {
 
-                String normalizedRawDirPath = rawDirPath.toString().replace('\\', '/');
+                String normalizedRawDirPath = PathUtils.normalizePathSeparators(rawDirPath);
                 generateAsset(defaultAssetGenerator, assetGenerators, normalizedRawDirPath);
             }
         } catch (Exception e) {
@@ -52,7 +53,7 @@ public class AssetGenerationController implements IGenerationController {
     private void generateAsset(IAssetGenerator defaultAssetGenerator, IAssetGenerator[] assetGenerators, String rawNormalizedDirPath) {
         if (!generateAssetFromGenerators(assetGenerators, rawNormalizedDirPath)) {
 
-            if (defaultAssetGenerator.isRawDirPathGeneratable(rawNormalizedDirPath)) {
+            if (defaultAssetGenerator.isDirPathGeneratable(rawNormalizedDirPath)) {
                 defaultAssetGenerator.generate(rawNormalizedDirPath);
             }
         }
@@ -68,7 +69,7 @@ public class AssetGenerationController implements IGenerationController {
      */
     private boolean generateAssetFromGenerators(IAssetGenerator[] assetGenerators, String rawNormalizedDirPath) {
         for (IAssetGenerator assetGenerator : assetGenerators) {
-            if (assetGenerator.isRawDirPathGeneratable(rawNormalizedDirPath)) {
+            if (assetGenerator.isDirPathGeneratable(rawNormalizedDirPath)) {
 
                 assetGenerator.generate(rawNormalizedDirPath);
                 return true;
@@ -81,7 +82,7 @@ public class AssetGenerationController implements IGenerationController {
     /**
      * Empties the generated directory.
      */
-    private void emptyGeneratedDirectory() {
+    private void emptyGeneratedDir() {
         try {
             FileUtils.deleteDirectory(new File(IGenerationData.GENERATED_DIRECTORY));
         } catch (Exception e) {

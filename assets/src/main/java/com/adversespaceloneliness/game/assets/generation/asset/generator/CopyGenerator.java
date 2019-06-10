@@ -10,7 +10,7 @@ import java.io.File;
 public class CopyGenerator implements IAssetGenerator {
 
     @Override
-    public boolean isRawDirPathGeneratable(String rawDirPath) {
+    public boolean isDirPathGeneratable(String rawDirPath) {
         return true;
     }
 
