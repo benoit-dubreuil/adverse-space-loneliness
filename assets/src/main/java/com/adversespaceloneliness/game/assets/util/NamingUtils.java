@@ -1,4 +1,4 @@
-package com.adversespaceloneliness.game.assets.generation.code.generator;
+package com.adversespaceloneliness.game.assets.util;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +13,9 @@ public final class NamingUtils {
 
     private static final String FILE_NAME_DELIMITER_REGEX = "(\\s|-|_|\\.)";
     private static final CharSequence ENUM_VALUE_DELIMITER = "_";
+
+    private NamingUtils() {
+    }
 
     /**
      * Converts a file name string into a type name.
@@ -54,8 +57,5 @@ public final class NamingUtils {
 
         String[] fileNameChunks = fileName.split(FILE_NAME_DELIMITER_REGEX);
         return Arrays.stream(fileNameChunks).map(String::toUpperCase).collect(Collectors.joining(ENUM_VALUE_DELIMITER));
-    }
-
-    private NamingUtils() {
     }
 }

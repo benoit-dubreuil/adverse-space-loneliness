@@ -1,15 +1,17 @@
 package com.adversespaceloneliness.game.assets.generation.code.generator;
 
+import com.adversespaceloneliness.game.assets.generation.code.generator.data.GeneratedDirs;
+
 public class AtlasIDsGenerator implements ICodeGenerator {
 
     @Override
-    public boolean isDirPathGeneratable(String dirPath) {
-        return false;
+    public boolean isDirPathGeneratable(String generatedDirPath) {
+        return generatedDirPath.startsWith(GeneratedDirs.SPRITE.getDir());
     }
 
     @Override
     public void generate(String assetPath) {
-// TODO
+        // TODO
     }
 
     @Override

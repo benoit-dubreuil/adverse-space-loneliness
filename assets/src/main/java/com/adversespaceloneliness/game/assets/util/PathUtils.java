@@ -10,6 +10,9 @@ public final class PathUtils {
     private static final char BACKSLASH = '\\';
     private static final char SLASH = '/';
 
+    private PathUtils() {
+    }
+
     /**
      * Computes the normalized string path of a {@link Path}.
      * <p>
@@ -21,8 +24,5 @@ public final class PathUtils {
      */
     public static String normalizePathSeparators(Path path) {
         return path.toString().replace(BACKSLASH, SLASH);
-    }
-
-    private PathUtils() {
     }
 }

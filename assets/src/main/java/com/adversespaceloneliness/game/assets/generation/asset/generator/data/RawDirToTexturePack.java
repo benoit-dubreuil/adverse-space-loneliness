@@ -20,11 +20,11 @@ public enum RawDirToTexturePack {
         initDir(dir);
     }
 
-    public String getDir() {
-        return m_dir;
-    }
-
     private void initDir(String dir) {
         m_dir = IGenerationData.RAW_DIRECTORY + '/' + dir;
+    }
+
+    public String getDir() {
+        return m_dir;
     }
 }
