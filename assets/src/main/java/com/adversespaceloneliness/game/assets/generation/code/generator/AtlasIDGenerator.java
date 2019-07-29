@@ -2,7 +2,12 @@ package com.adversespaceloneliness.game.assets.generation.code.generator;
 
 import com.adversespaceloneliness.game.assets.generation.code.generator.data.GeneratedDirs;
 
-public class AtlasIDsGenerator implements ICodeGenerator {
+/**
+ * Generates the code file that contains the IDs for the atlas asset.
+ */
+public class AtlasIDGenerator extends CodeGenerator {
+
+    private static final String ENUM_NAME = "AtlasID";
 
     @Override
     public boolean isDirPathGeneratable(String generatedDirPath) {
@@ -15,7 +20,7 @@ public class AtlasIDsGenerator implements ICodeGenerator {
     }
 
     @Override
-    public void endGeneration() {
-        // TODO
+    public String getGeneratedTypeName() {
+        return ENUM_NAME;
     }
 }

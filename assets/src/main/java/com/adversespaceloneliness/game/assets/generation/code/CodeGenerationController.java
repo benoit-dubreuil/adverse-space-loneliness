@@ -2,7 +2,7 @@ package com.adversespaceloneliness.game.assets.generation.code;
 
 import com.adversespaceloneliness.game.assets.generation.IGenerationController;
 import com.adversespaceloneliness.game.assets.generation.IGenerationData;
-import com.adversespaceloneliness.game.assets.generation.code.generator.AtlasIDsGenerator;
+import com.adversespaceloneliness.game.assets.generation.code.generator.AtlasIDGenerator;
 import com.adversespaceloneliness.game.assets.generation.code.generator.ICodeGenerator;
 import com.adversespaceloneliness.game.assets.generation.code.generator.IDGenerator;
 import com.adversespaceloneliness.game.assets.util.PathUtils;
@@ -23,7 +23,7 @@ public class CodeGenerationController implements IGenerationController {
      */
     @Override
     public void generate() {
-        ICodeGenerator[] generators = new ICodeGenerator[] { new IDGenerator(), new AtlasIDsGenerator() };
+        ICodeGenerator[] generators = new ICodeGenerator[] { new IDGenerator(), new AtlasIDGenerator() };
 
         try {
             List<Path> generatedDirs = Files.walk(Paths.get(IGenerationData.GENERATED_DIRECTORY), DIRECTORY_WALKING_DEPTH).filter(Files::isDirectory).collect(Collectors.toList());

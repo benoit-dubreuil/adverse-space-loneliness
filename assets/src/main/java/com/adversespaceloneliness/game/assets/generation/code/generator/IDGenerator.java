@@ -1,9 +1,11 @@
 package com.adversespaceloneliness.game.assets.generation.code.generator;
 
-public class IDGenerator implements ICodeGenerator {
+/**
+ * Generates the code file that contains the IDs for all assets.
+ */
+public class IDGenerator extends CodeGenerator {
 
-    public IDGenerator() {
-    }
+    private static final String ENUM_NAME = "AssetID";
 
     @Override
     public boolean isDirPathGeneratable(String generatedDirPath) {
@@ -16,7 +18,7 @@ public class IDGenerator implements ICodeGenerator {
     }
 
     @Override
-    public void endGeneration() {
-        // TODO
+    public String getGeneratedTypeName() {
+        return ENUM_NAME;
     }
 }

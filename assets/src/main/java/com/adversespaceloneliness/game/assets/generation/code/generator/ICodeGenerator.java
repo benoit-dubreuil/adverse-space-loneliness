@@ -9,6 +9,9 @@ import com.adversespaceloneliness.game.assets.generation.IGenerator;
  */
 public interface ICodeGenerator extends IGenerator {
 
+    String OUTPUT_PACKAGE = "com.adversespaceloneliness.game.assets.generated";
+    String OUTPUT_PATH = "src/main/java";
+
     /**
      * Ends the generation process for this generator.
      * <p>
