@@ -1,5 +1,6 @@
-package com.adversespaceloneliness.game.assets.generation.asset.generator;
+package com.adversespaceloneliness.game.assets.generation.asset.generator.concrete;
 
+import com.adversespaceloneliness.game.assets.generation.asset.generator.IAssetGenerator;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

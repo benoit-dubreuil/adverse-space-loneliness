@@ -1,5 +1,6 @@
-package com.adversespaceloneliness.game.assets.generation.code.generator;
+package com.adversespaceloneliness.game.assets.generation.code.generator.concrete;
 
+import com.adversespaceloneliness.game.assets.generation.code.generator.CodeGenerator;
 import com.adversespaceloneliness.game.assets.generation.code.generator.data.GeneratedDirs;
 
 /**

@@ -1,5 +1,6 @@
-package com.adversespaceloneliness.game.assets.generation.asset.generator;
+package com.adversespaceloneliness.game.assets.generation.asset.generator.concrete;
 
+import com.adversespaceloneliness.game.assets.generation.asset.generator.IAssetGenerator;
 import com.adversespaceloneliness.game.assets.generation.asset.generator.data.RawDirToTexturePack;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 

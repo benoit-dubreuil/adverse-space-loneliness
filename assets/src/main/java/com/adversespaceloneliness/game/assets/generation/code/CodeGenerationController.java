@@ -2,9 +2,9 @@ package com.adversespaceloneliness.game.assets.generation.code;
 
 import com.adversespaceloneliness.game.assets.generation.IGenerationController;
 import com.adversespaceloneliness.game.assets.generation.IGenerationData;
-import com.adversespaceloneliness.game.assets.generation.code.generator.AtlasIDGenerator;
+import com.adversespaceloneliness.game.assets.generation.code.generator.concrete.AtlasIDGenerator;
 import com.adversespaceloneliness.game.assets.generation.code.generator.ICodeGenerator;
-import com.adversespaceloneliness.game.assets.generation.code.generator.IDGenerator;
+import com.adversespaceloneliness.game.assets.generation.code.generator.concrete.IDGenerator;
 import com.adversespaceloneliness.game.assets.util.PathUtils;
 
 import java.nio.file.Files;

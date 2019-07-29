@@ -1,4 +1,6 @@
-package com.adversespaceloneliness.game.assets.generation.code.generator;
+package com.adversespaceloneliness.game.assets.generation.code.generator.concrete;
+
+import com.adversespaceloneliness.game.assets.generation.code.generator.CodeGenerator;
 
 /**
  * Generates the code file that contains the IDs for all assets.
@@ -15,6 +17,8 @@ public class IDGenerator extends CodeGenerator {
     @Override
     public void generate(String assetPath) {
         // TODO
+        System.out.println("IDGenerator");
+        System.out.println(assetPath);
     }
 
     @Override
