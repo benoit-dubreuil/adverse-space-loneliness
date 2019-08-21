@@ -23,7 +23,7 @@ public class CodeGenerationController implements IGenerationController {
      */
     @Override
     public void generate() {
-        ICodeGenerator[] generators = new ICodeGenerator[] { new IDGenerator(), new AtlasIDGenerator() };
+        ICodeGenerator[] generators = new ICodeGenerator[] { new IDGenerator()/*, new AtlasIDGenerator()*/ }; // TODO
 
         try {
             List<Path> generatedDirs = Files.walk(Paths.get(IGenerationData.GENERATED_DIRECTORY), DIRECTORY_WALKING_DEPTH).filter(Files::isDirectory).collect(Collectors.toList());
