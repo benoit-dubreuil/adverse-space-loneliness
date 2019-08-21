@@ -13,6 +13,8 @@ import java.io.File;
  */
 public abstract class CodeGenerator implements ICodeGenerator {
 
+    protected static final String FILENAME_SEPARATOR = "_";
+
     protected TypeSpec.Builder m_typeBuilder;
 
     public CodeGenerator() {
