@@ -1,5 +1,7 @@
 package com.adversespaceloneliness.game.assets.api;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * All asset types in the LibGDX game engine and their supported extensions.
  * <p>
@@ -28,7 +30,7 @@ public enum AssetType implements ICachedEnumValues<AssetType> {
     /**
      * Gets the {@link AssetType} correspond to the supplied extension.
      * <p>
-     * The extension must not contain a dot prefix.
+     * The extension must not contain a dot prefix. Also, the case is ignored.
      *
      * @param soughtExtension The file name extension without a dot prefix.
      *
@@ -38,7 +40,7 @@ public enum AssetType implements ICachedEnumValues<AssetType> {
 
         for (AssetType assetType : cachedEnumValues) {
             for (String assetTypeExtension : assetType.getFilenameExtensions()) {
-                if (soughtExtension.equals(assetTypeExtension)) {
+                if (StringUtils.equalsIgnoreCase(soughtExtension, assetTypeExtension)) {
                     return assetType;
                 }
             }
