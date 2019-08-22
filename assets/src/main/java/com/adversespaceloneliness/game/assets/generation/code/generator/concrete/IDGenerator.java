@@ -3,6 +3,9 @@ package com.adversespaceloneliness.game.assets.generation.code.generator.concret
 import com.adversespaceloneliness.game.assets.api.AssetType;
 import com.adversespaceloneliness.game.assets.api.IAssetID;
 import com.adversespaceloneliness.game.assets.generation.code.generator.CodeGenerator;
+import com.badlogic.gdx.assets.AssetLoaderParameters;
+import com.badlogic.gdx.assets.AssetManager;
+import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
@@ -33,6 +36,17 @@ public class IDGenerator extends CodeGenerator {
 
     private static final String FIELD_PATH_KEY = "path";
     private static final String FIELD_ASSET_TYPE_KEY = "assetType";
+
+    private static final String METHOD_LOAD_ASSET_NAME = "loadAsset";
+    private static final String METHOD_LOAD_ASSET_PARAM_ASSET_MANAGER = "assetManager";
+    private static final String METHOD_LOAD_ASSET_PARAM_PARAMETERS = "parameters";
+
+    private static final String METHOD_LOAD_ASSET_JAVADOC =
+        " Loads the asset using the default parameters.\n" + "\n" + " @param assetManager The asset manager used to load this asset.\n";
+
+    private static final String METHOD_LOAD_ASSET_OVERLOAD_JAVADOC = " Loads the asset using the supplied parameters.\n" + " <p>\n"
+        + " The generic parameters parameterized type must be the same as the one returned by {@link AssetType#getImportClass()} for this asset.\n" + "\n"
+        + " @param assetManager The asset manager used to load this asset.\n" + " @param parameters   The parameters used to load this asset.\n";
 
     private Map<String, String> m_idNames;
     private Set<String> m_duplicateIdNames;
@@ -67,6 +81,8 @@ public class IDGenerator extends CodeGenerator {
         addGetters();
         addConstructor();
         addEnumConstants();
+        addMethodLoadAsset();
+        addMethodLoadAssetOverload();
 
         super.endGeneration();
     }
@@ -122,6 +138,39 @@ public class IDGenerator extends CodeGenerator {
 
             m_typeBuilder.addEnumConstant(idNamePath.getKey(), enumConstantBuilder.build());
         }
+    }
+
+    private void addMethodLoadAsset() {
+        MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(METHOD_LOAD_ASSET_NAME);
+
+        methodBuilder.addModifiers(Modifier.PUBLIC);
+        methodBuilder.addJavadoc(METHOD_LOAD_ASSET_JAVADOC);
+        methodBuilder.addParameter(AssetManager.class, METHOD_LOAD_ASSET_PARAM_ASSET_MANAGER);
+
+        methodBuilder.addStatement("$L.load($L, $L.getImportClass())", METHOD_LOAD_ASSET_PARAM_ASSET_MANAGER, FIELD_PATH_NAME, FIELD_ASSET_TYPE_NAME);
+
+        m_typeBuilder.addMethod(methodBuilder.build());
+    }
+
+    private void addMethodLoadAssetOverload() {
+        MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(METHOD_LOAD_ASSET_NAME);
+
+        methodBuilder.addModifiers(Modifier.PUBLIC);
+        methodBuilder.addJavadoc(METHOD_LOAD_ASSET_OVERLOAD_JAVADOC);
+        methodBuilder.addParameter(AssetManager.class, METHOD_LOAD_ASSET_PARAM_ASSET_MANAGER);
+        methodBuilder.addParameter(AssetLoaderParameters.class, METHOD_LOAD_ASSET_PARAM_PARAMETERS);
+
+        AnnotationSpec.Builder suppressWarningsAnnot = AnnotationSpec.builder(SuppressWarnings.class);
+        suppressWarningsAnnot.addMember("value", "$S", "unchecked");
+        methodBuilder.addAnnotation(suppressWarningsAnnot.build());
+
+        methodBuilder.addStatement("$L.load($L, $L.getImportClass(), $L)",
+            METHOD_LOAD_ASSET_PARAM_ASSET_MANAGER,
+            FIELD_PATH_NAME,
+            FIELD_ASSET_TYPE_NAME,
+            METHOD_LOAD_ASSET_PARAM_PARAMETERS);
+
+        m_typeBuilder.addMethod(methodBuilder.build());
     }
 
     /**
