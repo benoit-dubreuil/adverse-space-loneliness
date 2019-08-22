@@ -1,5 +1,6 @@
 package com.adversespaceloneliness.game.core;
 
+import com.adversespaceloneliness.game.assets.generated.AssetID;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -34,21 +35,21 @@ public class AdverseSpaceLoneliness extends ApplicationAdapter {
         m_assetManager.setLoader(BitmapFont.class, ".ttf", new FreetypeFontLoader(freeTypeResolver));
 
         FreetypeFontLoader.FreeTypeFontLoaderParameter freeTypeParams = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
-        freeTypeParams.fontFileName = "assets/generated/font/walterturncoat.ttf";
+        freeTypeParams.fontFileName = AssetID.WALTERTURNCOAT.getPath();
         freeTypeParams.fontParameters.size = 40;
 
-        m_assetManager.load("assets/generated/font/walterturncoat.ttf", BitmapFont.class, freeTypeParams);
-        m_assetManager.load("assets/generated/texture/badlogic.jpg", Texture.class);
-        m_assetManager.load("assets/generated/sprite/spritesheet_and_texture.atlas", TextureAtlas.class);
+        AssetID.WALTERTURNCOAT.loadAsset(m_assetManager, freeTypeParams);
+        AssetID.BADLOGIC.loadAsset(m_assetManager);
+        AssetID.SPRITESHEET_AND_TEXTURE_ATLAS.loadAsset(m_assetManager);
 
         m_assetManager.finishLoading();
 
         m_batch = new SpriteBatch();
 
-        m_font = m_assetManager.get("assets/generated/font/walterturncoat.ttf");
-        m_img = m_assetManager.get("assets/generated/texture/badlogic.jpg");
+        m_font = m_assetManager.get(AssetID.WALTERTURNCOAT.getPath());
+        m_img = m_assetManager.get(AssetID.BADLOGIC.getPath());
 
-        m_atlas = m_assetManager.get("assets/generated/sprite/spritesheet_and_texture.atlas");
+        m_atlas = m_assetManager.get(AssetID.SPRITESHEET_AND_TEXTURE_ATLAS.getPath());
         m_sprite = m_atlas.createSprite("retro-space-pixel-shooter-pack/misc/nuke", 5);
         m_sprite.setPosition(400, 400);
     }
