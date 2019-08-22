@@ -1,5 +1,13 @@
 package com.adversespaceloneliness.game.assets.api;
 
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.I18NBundle;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -9,22 +17,24 @@ import org.apache.commons.lang3.StringUtils;
  */
 public enum AssetType implements ICachedEnumValues<AssetType> {
 
-    IMAGE(new String[] { "jpg", "jpeg", "png", "bmp" }),
-    AUDIO(new String[] { "wav", "mp3", "ogg" }),
-    FONT(new String[] { "fnt", "ttf" }),
-    TEXTURE_ATLAS(new String[] { "atlas" }),
-    GUI_SKIN(new String[] { "json" }),
-    LOCALIZATION(new String[] { "properties" }),
-    PARTICLE_EFFECT(new String[] { "p" });
+    IMAGE(new String[] { "jpg", "jpeg", "png", "bmp" }, Texture.class),
+    AUDIO(new String[] { "wav", "mp3", "ogg" }, Sound.class), // Or Music.class
+    FONT(new String[] { "fnt", "ttf" }, BitmapFont.class),
+    TEXTURE_ATLAS(new String[] { "atlas" }, TextureAtlas.class),
+    GUI_SKIN(new String[] { "json" }, Skin.class),
+    LOCALIZATION(new String[] { "properties" }, I18NBundle.class),
+    PARTICLE_EFFECT(new String[] { "p" }, ParticleEffect.class);
 
     public static final AssetType[] cachedEnumValues = AssetType.values();
 
     private static final char ID_SUFFIX_SEPARATOR = '_';
 
     private final String[] m_filenameExtensions;
+    private final Class<?> m_importClass;
 
-    AssetType(String[] filenameExtensions) {
+    AssetType(String[] filenameExtensions, Class<?> importClass) {
         m_filenameExtensions = filenameExtensions;
+        m_importClass = importClass;
     }
 
     /**
@@ -54,18 +64,11 @@ public enum AssetType implements ICachedEnumValues<AssetType> {
         return cachedEnumValues;
     }
 
-    /**
-     * Computes the suffix for asset IDs for code generation.
-     * <p>
-     * The suffix is the ID suffix separator concatenated with the asset type.
-     *
-     * @return The suffix for asset IDs for code generation
-     */
-    public String computeIDSuffix() {
-        return ID_SUFFIX_SEPARATOR + name();
-    }
-
     public String[] getFilenameExtensions() {
         return m_filenameExtensions;
+    }
+
+    public Class<?> getImportClass() {
+        return m_importClass;
     }
 }
