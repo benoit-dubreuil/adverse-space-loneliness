@@ -18,7 +18,6 @@ Please, contact the assets' original authors for licensing.
 			The author is Roch Liles.
 			Some small changes were made.
 			
-- **Audio** : 
 
 
 ## The Project
@@ -34,8 +33,8 @@ Please, contact the assets' original authors for licensing.
 #### Assets Subproject
 1. Standardized the sprites from the _retro-pixel-space-shooter-shmup-pack_ by mirroring them and renaming them using a _PowerShell_ script
 2. Created a _Java_ tool accompanied with a _Gradle_ script to split all sprite strips
-4. Created a _Java_ tool accompanied with a _Gradle_ script to pack all sprites into a texture atlas
-
+3. Created a _Java_ tool accompanied with a _Gradle_ script to pack all sprites into a texture atlas
+4. Created a _Java_ tool to generate IDs in a _Java enum_ for all the generated assets
 
 ### Tools & Requirements
 #### Development
@@ -48,4 +47,11 @@ Please, contact the assets' original authors for licensing.
 
 #### Both
 - OpenGL version 3.0
-- OpenAL
+
+### Abandon
+
+I abandoned the project.
+
+The reasons behind this is my lack of free time to continue this project (university & other more interesting projects) and because I lack the resources to make a game that I would be proud of. More precisely, the asset pack that I bought was incomplete and didn't match my vision for the game.
+
+However, I did program multiple useful tools for a game engine and they work, such as the code generation for generated assets.
