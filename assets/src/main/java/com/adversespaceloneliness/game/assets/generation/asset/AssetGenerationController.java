@@ -2,8 +2,8 @@ package com.adversespaceloneliness.game.assets.generation.asset;
 
 import com.adversespaceloneliness.game.assets.generation.IGenerationController;
 import com.adversespaceloneliness.game.assets.generation.IGenerationData;
-import com.adversespaceloneliness.game.assets.generation.asset.generator.concrete.CopyGenerator;
 import com.adversespaceloneliness.game.assets.generation.asset.generator.IAssetGenerator;
+import com.adversespaceloneliness.game.assets.generation.asset.generator.concrete.CopyGenerator;
 import com.adversespaceloneliness.game.assets.generation.asset.generator.concrete.SpritePackerGenerator;
 import com.adversespaceloneliness.game.assets.util.PathUtils;
 import org.apache.commons.io.FileUtils;

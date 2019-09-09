@@ -22,8 +22,6 @@ public abstract class CodeGenerator implements ICodeGenerator {
         m_typeBuilder = TypeSpec.enumBuilder(getGeneratedTypeName()).addModifiers(Modifier.PUBLIC).addAnnotation(generatedAnnotation);
     }
 
-    public abstract String getGeneratedTypeName();
-
     @Override
     public void endGeneration() {
         TypeSpec assetIDs = m_typeBuilder.build();
@@ -35,4 +33,6 @@ public abstract class CodeGenerator implements ICodeGenerator {
             e.printStackTrace();
         }
     }
+
+    public abstract String getGeneratedTypeName();
 }

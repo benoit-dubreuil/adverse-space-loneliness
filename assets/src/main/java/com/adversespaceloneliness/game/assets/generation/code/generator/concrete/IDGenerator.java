@@ -87,11 +87,6 @@ public class IDGenerator extends CodeGenerator {
         super.endGeneration();
     }
 
-    @Override
-    public String getGeneratedTypeName() {
-        return ENUM_NAME;
-    }
-
     private void addEnumFields() {
         FieldSpec pathField = FieldSpec.builder(String.class, FIELD_PATH_NAME, Modifier.PRIVATE).build();
         FieldSpec assetTypeField = FieldSpec.builder(AssetType.class, FIELD_ASSET_TYPE_NAME, Modifier.PRIVATE).build();
@@ -213,5 +208,10 @@ public class IDGenerator extends CodeGenerator {
      */
     private String assembleDuplicateIdName(String idName, String idPath) {
         return idName + FILENAME_SEPARATOR + FilenameUtils.getExtension(idPath).toUpperCase();
+    }
+
+    @Override
+    public String getGeneratedTypeName() {
+        return ENUM_NAME;
     }
 }
