@@ -18,6 +18,9 @@ public class ImageSplitter {
     private static final String IMG_COUNT_SUFFIX_REGEX = "(_strip\\d)$";
     private static final String IMG_COUNT_REGEX = "\\d$";
 
+    public ImageSplitter() {
+    }
+
     /**
      * Splits all image strips supplied as arguments. The main exits with a failure code if at least one of the paths does not exist.
      *
@@ -33,9 +36,6 @@ public class ImageSplitter {
 
         ImageSplitter imgSplitter = new ImageSplitter();
         imgSplitter.splitImages(paths);
-    }
-
-    public ImageSplitter() {
     }
 
     /**
