@@ -34,7 +34,7 @@ I abandoned the project.
 
 The reasons behind this is my lack of free time to continue this project (university & other more interesting projects) and because I lack the resources to make a game that I would be proud of. More precisely, the asset pack that I bought was incomplete and didn't match my vision for the game.
 
-However, I did program multiple useful tools for a game engine and they work, such as the code generation for generated assets.
+However, I did program **multiple useful tools** for a game engine, such as the **code generation tool** for **generated assets**.
 
 ## License
 
