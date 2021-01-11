@@ -4,7 +4,7 @@
 
 ### Game and Source Code
 
-The game as a whole and the source code are under the MIT License. Please, search for the file named `LICENSE` in the project structure.
+The game as a whole and the source code are under the MIT License. Please, read the [license](LICENSE) file from the project structure.
 
 ### Assets
 
