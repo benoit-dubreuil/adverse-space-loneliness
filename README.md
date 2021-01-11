@@ -1,5 +1,7 @@
 # Adverse Space Loneliness
 
+![Preview](assets/assets/meta/retro-space-pixel-shooter-pack/preview-images/Enhanced%20Preview%204.png)
+
 ## The Project
 
 ### Goals
