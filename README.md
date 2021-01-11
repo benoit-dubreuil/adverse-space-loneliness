@@ -1,25 +1,5 @@
 # Adverse Space Loneliness
 
-## License
-
-### Game and Source Code
-
-The game as a whole and the source code are under the MIT License. Please, read the [license](LICENSE) file from the project structure.
-
-### Assets
-
-All the assets cannot be redistributed and/or used without a proper license. The MIT License does not apply to the assets.
-
-The assets can only be used to play the game in its original form, i.e. unchanged.
-
-Please, contact the assets' original authors for licensing.
-- **Visuals** : The visual asset pack was bought from https://www.gamedevmarket.net/asset/retro-pixel-space-shooter-shmup-pack/.
-			The license I got from buying this asset pack is the https://creativecommons.org/licenses/by/4.0/ license.
-			The author is Roch Liles.
-			Some small changes were made.
-			
-
-
 ## The Project
 
 ### Goals
@@ -55,3 +35,21 @@ I abandoned the project.
 The reasons behind this is my lack of free time to continue this project (university & other more interesting projects) and because I lack the resources to make a game that I would be proud of. More precisely, the asset pack that I bought was incomplete and didn't match my vision for the game.
 
 However, I did program multiple useful tools for a game engine and they work, such as the code generation for generated assets.
+
+## License
+
+### Game and Source Code
+
+The game as a whole and the source code are under the MIT License. Please, read the [license](LICENSE) file from the project structure.
+
+### Assets
+
+All the assets cannot be redistributed and/or used without a proper license. The MIT License does not apply to the assets.
+
+The assets can only be used to play the game in its original form, i.e. unchanged.
+
+Please, contact the assets' original authors for licensing.
+- **Visuals** : The visual asset pack was bought from https://www.gamedevmarket.net/asset/retro-pixel-space-shooter-shmup-pack/.
+			The license I got from buying this asset pack is the https://creativecommons.org/licenses/by/4.0/ license.
+			The author is Roch Liles.
+			Some small changes were made.
